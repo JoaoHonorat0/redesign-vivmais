@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vivmais — Saúde, Longevidade & Bem-Estar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fbf7f0;
+    --bg-2: #f4ecdf;
+    --ink: #0f2235;
+    --ink-soft: #3a5468;
+    --teal: #18a5a7;
+    --teal-deep: #0d7c7e;
+    --orange: #ef6c2c;
+    --orange-light: #f59055;
+    --yellow: #f3b740;
+    --cream: #ffffff;
+    --line: rgba(15,34,53,0.10);
+    --shadow: 0 24px 60px -28px rgba(15,34,53,0.35);
+    --radius: 20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',serif; font-weight:500; letter-spacing:-0.02em; line-height:1.08}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+  button{font-family:inherit; cursor:pointer; border:none; background:none}
+
+  /* NAV */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background: rgba(251,247,240,0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1280px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px; gap:32px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-size:26px; font-weight:600; letter-spacing:-0.03em;
+    color: var(--ink);
+  }
+  .logo-mark{ width:36px; height:36px; display:inline-block }
+  .logo-mark svg{width:100%; height:100%}
+  .nav-links{display:flex; gap:28px; align-items:center; flex:1; justify-content:center}
+  .nav-links a{font-size:14.5px; color:var(--ink-soft); transition:color .2s; font-weight:500}
+  .nav-links a:hover{color: var(--orange)}
+  .nav-actions{display:flex; gap:10px; align-items:center}
+  .nav-cta{
+    background: var(--ink); color: var(--bg);
+    padding: 11px 22px; border-radius:999px;
+    font-size:14px; font-weight:600;
+    transition: transform .2s, background .2s;
+  }
+  .nav-cta:hover{background: var(--teal-deep); transform: translateY(-1px)}
+  .nav-cta-secondary{
+    color: var(--ink); padding: 11px 18px;
+    font-size: 14px; font-weight:600;
+    border-radius: 999px;
+    transition: background .2s;
+  }
+  .nav-cta-secondary:hover{background: var(--bg-2)}
+  @media (max-width: 980px){
+    .nav-links{display:none}
+    .nav-cta-secondary{display:none}
+  }
+
+  /* HERO */
+  .hero{
+    max-width:1280px; margin:0 auto;
+    padding: 72px 32px 60px;
+    display:grid; grid-template-columns: 1.05fr 0.95fr; gap:60px;
+    align-items:center; position:relative;
+  }
+  .hero::before{
+    content:""; position:absolute; top:30px; right:32px;
+    width:340px; height:340px; border-radius:50%;
+    background: radial-gradient(circle, rgba(243,183,64,0.22), transparent 70%);
+    z-index:0; pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    color: var(--orange); font-weight:700;
+    margin-bottom: 22px;
+    background: rgba(239,108,44,0.08);
+    padding: 7px 14px; border-radius: 999px;
+    border: 1px solid rgba(239,108,44,0.2);
+  }
+  .eyebrow .dot{width:6px; height:6px; border-radius:50%; background: var(--orange); animation: pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1); opacity:1} 50%{transform:scale(1.5); opacity:0.4}}
+
+  .hero h1{
+    font-size: clamp(40px, 5.5vw, 70px);
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .hero h1 em{font-style: italic; color: var(--orange); font-weight:400}
+  .hero p.lead{
+    font-size:18px; color: var(--ink-soft);
+    margin-bottom: 32px; max-width: 520px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:32px}
+  .btn-primary{
+    background: var(--orange); color: white;
+    padding: 16px 28px; border-radius:999px;
+    font-weight:600; font-size:15px;
+    transition: transform .2s, background .2s, box-shadow .2s;
+    box-shadow: 0 12px 28px -10px rgba(239,108,44,0.55);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover{background: #d75c20; transform: translateY(-2px); box-shadow: 0 18px 36px -12px rgba(239,108,44,0.7)}
+  .btn-primary svg{width:16px; height:16px}
+  .btn-ghost{
+    padding: 16px 24px; border-radius:999px;
+    border: 1.5px solid var(--ink); font-weight:600; font-size:15px;
+    color: var(--ink);
+    transition: background .2s, color .2s;
+  }
+  .btn-ghost:hover{background:var(--ink); color: white}
+
+  .hero-trust{
+    display:flex; gap:24px; align-items:center; flex-wrap:wrap;
+    padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .trust-item{display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-soft)}
+  .trust-item b{color: var(--ink); font-family:'Fraunces',serif; font-size:18px; font-weight:600; display:block}
+  .trust-divider{width:1px; height:30px; background: var(--line)}
+
+  .hero-visual{
+    position:relative; z-index:1;
+    aspect-ratio: 4/5;
+    border-radius: 220px 220px 28px 28px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(243,183,64,0.5), transparent 55%),
+      linear-gradient(160deg, var(--teal), var(--teal-deep) 75%);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .hero-visual::after{
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(circle at 70% 80%, rgba(239,108,44,0.35), transparent 50%);
+  }
+
+  .phone-mockup{
+    position: absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+    width: 64%; aspect-ratio: 9/19;
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.35), 0 0 0 8px #1a1a1a;
+    z-index:2; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .phone-top{
+    background: linear-gradient(180deg, var(--teal) 0%, var(--teal-deep) 100%);
+    color: white;
+    padding: 36px 18px 22px;
+    border-radius: 0 0 30px 30px;
+    text-align:center; position: relative;
+  }
+  .phone-top::before{
+    content:""; position:absolute; top:8px; left:50%; transform: translateX(-50%);
+    width: 60px; height: 5px; background: rgba(0,0,0,0.4); border-radius: 999px;
+  }
+  .phone-top .mlogo{ width:38px; height:38px; margin: 0 auto 8px }
+  .phone-top h4{font-size:14px; font-family:'Fraunces',serif; font-weight:500; line-height:1.2}
+  .phone-body{padding: 18px 16px; flex:1; background: white}
+  .phone-input{
+    background: #f1f0ee; border-radius: 8px;
+    padding: 10px 12px; font-size: 11px; color: #555;
+    margin-bottom: 10px;
+  }
+  .phone-input small{display:block; font-size:8px; color: #999; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:2px}
+  .phone-btn{
+    background: var(--orange); color: white;
+    text-align:center; padding: 10px;
+    border-radius: 999px; font-size: 11px; font-weight: 700;
+    margin-top: 8px;
+  }
+  .phone-link{font-size:9px; color: var(--ink-soft); text-align:center; margin-top:10px}
+  .phone-link b{color: var(--teal-deep)}
+
+  .hero-floater{
+    position:absolute; top: 6%; right: -12px;
+    background: white;
+    border-radius: 14px; padding:12px 16px;
+    box-shadow: 0 14px 30px -10px rgba(0,0,0,0.2);
+    font-size: 12.5px; z-index:3;
+    display:flex; align-items:center; gap:10px;
+  }
+  .green-dot{width:8px; height:8px; border-radius:50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.2)}
+
+  .hero-card{
+    position:absolute; bottom:24px; left:24px; right:24px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-radius:14px; padding: 14px 16px;
+    z-index:3;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.25);
+    display:flex; gap:12px; align-items:center;
+  }
+  .star-rating{color: var(--yellow); font-size:13px; letter-spacing:1px}
+  .hero-card-text{font-size:12.5px; color:var(--ink-soft); line-height:1.35}
+  .hero-card-text b{color: var(--ink); font-family:'Fraunces',serif; font-weight:600; font-size:14px; display:block}
+
+  @media (max-width: 980px){
+    .hero{grid-template-columns: 1fr; padding: 50px 24px}
+    .hero-visual{aspect-ratio: 1/1; border-radius: 28px; max-height: 540px}
+    .hero-floater{display:none}
+    .phone-mockup{width: 50%}
+  }
+
+  /* ACCESS PORTAL */
+  .access-portal{
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    padding: 80px 32px;
+  }
+  .access-inner{max-width:1280px; margin:0 auto}
+  .access-head{text-align:center; margin-bottom: 50px; max-width:760px; margin-left:auto; margin-right:auto}
+  .access-head h2{
+    font-size: clamp(32px, 4.2vw, 50px);
+    color: var(--ink); margin-bottom:18px;
+  }
+  .access-head h2 em{font-style:italic; color: var(--orange); font-weight:400}
+  .access-head p{font-size:17px; color:var(--ink-soft); max-width:600px; margin:0 auto}
+
+  .access-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:24px }
+  .access-card{
+    background: var(--cream);
+    border-radius: 24px; padding: 32px;
+    border: 1px solid var(--line);
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    display:flex; flex-direction:column;
+    position: relative; overflow: hidden;
+  }
+  .access-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height: 4px;
+    background: var(--accent, var(--teal));
+    opacity:0; transition: opacity .3s;
+  }
+  .access-card:hover{transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--accent, var(--teal))}
+  .access-card:hover::before{opacity:1}
+  .access-card.contratante{--accent: var(--orange)}
+  .access-card.empreendedor{--accent: var(--teal)}
+  .access-card.candidato{--accent: var(--yellow)}
+
+  .access-icon{
+    width:60px; height:60px; border-radius: 16px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+    display:grid; place-items:center;
+    margin-bottom: 22px;
+  }
+  .access-card h3{font-size: 24px; color: var(--ink); margin-bottom: 10px}
+  .access-card .who{
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 14px;
+  }
+  .access-card p{font-size:14.5px; color: var(--ink-soft); margin-bottom: 22px; flex:1}
+  .access-features{list-style:none; margin-bottom: 24px; display:flex; flex-direction:column; gap:8px}
+  .access-features li{font-size:13.5px; color:var(--ink); display:flex; align-items:center; gap:8px}
+  .access-features li::before{
+    content:""; width:14px; height:14px; flex-shrink:0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2318a5a7' stroke-width='3'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size:contain;
+  }
+  .access-btn{
+    background: var(--accent); color: white;
+    padding: 13px 22px; border-radius: 12px;
+    font-weight:600; font-size: 14.5px;
+    transition: filter .2s, transform .15s;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .access-card.candidato .access-btn{color: var(--ink)}
+  .access-btn:hover{filter: brightness(0.92); transform: translateY(-1px)}
+  .access-btn .arrow{transition: transform .2s}
+  .access-btn:hover .arrow{transform: translateX(4px)}
+
+  @media (max-width: 900px){.access-grid{grid-template-columns:1fr}}
+
+  /* HOW IT WORKS */
+  .how{padding: 100px 32px; background: var(--cream)}
+  .how-inner{max-width:1280px; margin:0 auto}
+  .section-head{margin-bottom: 60px; max-width:640px}
+  .section-head .tag{
+    font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    color: var(--orange); font-weight:700; margin-bottom:14px; display:block;
+  }
+  .section-head h2{font-size: clamp(34px, 4.2vw, 52px); color: var(--ink)}
+  .section-head h2 em{font-style:italic; color: var(--orange); font-weight:400}
+
+  .how-steps{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap:24px;
+    counter-reset: step;
+  }
+  .how-step{
+    padding: 28px;
+    background: var(--bg); border-radius: 18px;
+    transition: transform .3s;
+  }
+  .how-step:hover{transform: translateY(-4px)}
+  .how-step::before{
+    counter-increment: step;
+    content: "0" counter(step);
+    font-family:'Fraunces',serif; font-style:italic;
+    font-size: 38px; color: var(--orange);
+    font-weight: 400; line-height:1;
+    margin-bottom: 16px; display:block;
+  }
+  .how-step h4{font-size:19px; color: var(--ink); margin-bottom:10px; font-family:'Fraunces',serif; font-weight:600}
+  .how-step p{font-size:14px; color: var(--ink-soft)}
+
+  @media (max-width:980px){.how-steps{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.how-steps{grid-template-columns:1fr}}
+
+  /* SERVICES */
+  .services{padding: 100px 32px; background: var(--bg-2)}
+  .services-inner{max-width:1280px; margin:0 auto}
+  .services-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:20px}
+  .svc-card{
+    background: var(--cream);
+    border-radius: 22px; padding: 30px;
+    border: 1px solid var(--line);
+    transition: transform .3s, box-shadow .3s;
+    position:relative; overflow:hidden;
+  }
+  .svc-card:hover{transform: translateY(-4px); box-shadow: var(--shadow)}
+  .svc-decoration{
+    position:absolute; top:-30px; right:-30px;
+    width: 140px; height:140px; border-radius:50%;
+    opacity: 0.08;
+  }
+  .svc-card.online .svc-decoration{background: var(--teal)}
+  .svc-card.interno .svc-decoration{background: var(--orange)}
+  .svc-card.externo .svc-decoration{background: var(--yellow)}
+
+  .svc-icon{
+    width:54px; height:54px; border-radius: 14px;
+    display:grid; place-items:center; margin-bottom: 22px;
+    color: white; position: relative; z-index:1;
+  }
+  .svc-card.online .svc-icon{background: var(--teal)}
+  .svc-card.interno .svc-icon{background: var(--orange)}
+  .svc-card.externo .svc-icon{background: var(--yellow); color: var(--ink)}
+  .svc-card h3{font-size:24px; color: var(--ink); margin-bottom:8px; position:relative; z-index:1}
+  .svc-meta{
+    font-size: 12px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform:uppercase;
+    margin-bottom: 18px; font-weight:600;
+  }
+  .svc-card p{font-size:14.5px; color:var(--ink-soft); margin-bottom: 18px; position: relative; z-index:1}
+  .svc-list{list-style:none; display:flex; flex-direction:column; gap:6px; position:relative; z-index:1}
+  .svc-list li{font-size:13.5px; color:var(--ink); padding-left: 18px; position:relative}
+  .svc-list li::before{content:"›"; position:absolute; left:0; color:var(--orange); font-weight:700; font-size:16px; line-height:1.3}
+
+  @media (max-width: 900px){.services-grid{grid-template-columns:1fr}}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:100px 32px; background: var(--cream)}
+  .test-grid{
+    display:grid; grid-template-columns: repeat(4,1fr); gap:20px;
+    max-width:1280px; margin:0 auto;
+  }
+  .test-card{
+    background: var(--bg); border-radius: 20px; padding: 26px;
+    border: 1px solid var(--line);
+    display:flex; flex-direction:column; gap: 20px;
+    transition: transform .3s, border-color .3s;
+  }
+  .test-card:hover{transform: translateY(-4px); border-color: var(--orange)}
+  .quote-mark{
+    font-family:'Fraunces',serif; font-size:54px; line-height:0.5;
+    color: var(--orange); height:24px;
+  }
+  .test-text{font-size:15px; color:var(--ink-soft); flex:1; line-height:1.55}
+  .test-author{display:flex; gap:12px; align-items:center; padding-top:18px; border-top: 1px solid var(--line)}
+  .avatar{
+    width:42px; height:42px; border-radius:50%;
+    background: linear-gradient(135deg, var(--orange-light), var(--orange));
+    display:grid; place-items:center; color: white;
+    font-family:'Fraunces',serif; font-weight:600;
+    flex-shrink:0;
+  }
+  .test-author b{display:block; font-size:14px; color:var(--ink); font-family:'Fraunces',serif; font-weight:600}
+  .test-author span{font-size:12px; color:var(--ink-soft)}
+
+  @media (max-width:1100px){.test-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.test-grid{grid-template-columns:1fr}}
+
+  /* EMPRESAS */
+  .empresas{
+    background: var(--ink); color: white;
+    padding: 100px 32px; position:relative; overflow:hidden;
+  }
+  .empresas::before{
+    content:""; position:absolute; top:-100px; right:-100px;
+    width:400px; height:400px; border-radius:50%;
+    background: radial-gradient(circle, rgba(243,183,64,0.18), transparent 70%);
+  }
+  .empresas::after{
+    content:""; position:absolute; bottom:-150px; left:-100px;
+    width:380px; height:380px; border-radius:50%;
+    background: radial-gradient(circle, rgba(24,165,167,0.22), transparent 70%);
+  }
+  .empresas-inner{max-width:1280px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1}
+  .empresas-text .tag{
+    font-size:12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); font-weight:700; margin-bottom: 14px; display:block;
+  }
+  .empresas-text h2{font-size: clamp(32px, 4vw, 48px); margin-bottom:20px}
+  .empresas-text h2 em{color: var(--yellow); font-style: italic; font-weight:400}
+  .empresas-text p{font-size:17px; opacity:0.85; margin-bottom: 30px}
+  .empresas-stats{display:grid; grid-template-columns: repeat(2,1fr); gap:20px}
+  .e-stat{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 20px;
+  }
+  .e-stat b{
+    display:block; font-family:'Fraunces',serif; font-weight:500;
+    font-size: 36px; color: var(--yellow); letter-spacing: -0.02em; line-height:1;
+    margin-bottom: 6px;
+  }
+  .e-stat span{font-size:13px; opacity:0.75}
+
+  .empresas-features{
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px; padding: 36px;
+    backdrop-filter: blur(10px);
+  }
+  .empresas-features h4{
+    font-family:'Fraunces',serif; font-size:22px; font-weight:600;
+    margin-bottom:22px;
+  }
+  .empresas-features ul{list-style:none; display:flex; flex-direction:column; gap:14px}
+  .empresas-features li{display:flex; gap:12px; align-items:flex-start; font-size:15px; opacity:0.92}
+  .empresas-features .check{
+    width:22px;height:22px; border-radius:50%; background: var(--yellow); color: var(--ink);
+    display:grid; place-items:center; font-size:13px; font-weight:700;
+    flex-shrink:0; margin-top: 2px;
+  }
+  .empresas-cta{margin-top:30px}
+
+  @media (max-width:980px){.empresas-inner{grid-template-columns:1fr}}
+
+  /* FAQ */
+  .faq-section{background: var(--bg); padding: 100px 32px}
+  .faq-grid{display:grid; grid-template-columns: 0.7fr 1fr; gap:80px; max-width:1280px; margin:0 auto}
+  .faq-item{border-top: 1px solid var(--line); padding: 22px 0}
+  .faq-item:last-child{border-bottom: 1px solid var(--line)}
+  .faq-q{
+    width:100%; text-align:left;
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+    font-family:'Fraunces',serif; font-size: 20px; font-weight:500;
+    color: var(--ink);
+  }
+  .faq-toggle{
+    width:32px;height:32px; border-radius:50%;
+    background: var(--bg-2); color: var(--ink);
+    display:grid; place-items:center; font-size:18px;
+    transition: transform .3s, background .2s;
+    flex-shrink:0;
+  }
+  .faq-item.open .faq-toggle{transform: rotate(45deg); background: var(--orange); color: white}
+  .faq-a{
+    max-height:0; overflow:hidden;
+    transition: max-height .35s ease, padding-top .25s;
+    color: var(--ink-soft); font-size:15px;
+  }
+  .faq-item.open .faq-a{max-height:300px; padding-top:14px}
+
+  @media (max-width:900px){.faq-grid{grid-template-columns:1fr; gap:36px}}
+
+  /* FOOTER */
+  footer{background: var(--ink); color: white; padding: 70px 32px 32px}
+  .foot-grid{
+    max-width:1280px; margin:0 auto;
+    display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap:44px;
+    padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  footer .logo{color: white}
+  footer p{font-size:14px; opacity:0.7; margin-top:18px; max-width:300px; line-height:1.6}
+  .foot-col h4{
+    font-size:13px; text-transform:uppercase; letter-spacing:0.16em;
+    color: var(--yellow); margin-bottom: 16px; font-weight:700;
+  }
+  .foot-col a{
+    display:block; font-size:14px; color: rgba(255,255,255,0.78);
+    padding: 5px 0; transition: color .2s;
+  }
+  .foot-col a:hover{color: var(--yellow)}
+  .foot-bottom{
+    max-width:1280px; margin: 24px auto 0;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    font-size:13px; opacity:0.6;
+  }
+  .socials{display:flex; gap:12px}
+  .social-link{
+    width:36px; height:36px; border-radius:50%;
+    border:1px solid rgba(255,255,255,0.2);
+    display:grid; place-items:center;
+    transition: background .2s, border-color .2s;
+  }
+  .social-link:hover{background: var(--orange); border-color: var(--orange)}
+
+  @media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr; gap:30px}}
+  @media (max-width:560px){.foot-grid{grid-template-columns:1fr}}
+
+  /* MODAL */
+  .modal{
+    position: fixed; inset:0;
+    background: rgba(15,34,53,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display:none; align-items:center; justify-content:center;
+    z-index:100; padding:20px;
+  }
+  .modal.active{display:flex; animation: fadeIn .25s ease}
+  @keyframes fadeIn{from{opacity:0} to{opacity:1}}
+
+  .login-card{
+    width:100%; max-width: 920px;
+    background: var(--cream);
+    border-radius: 24px; overflow:hidden;
+    display:grid; grid-template-columns: 0.85fr 1.15fr;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.4);
+    animation: slideUp .35s cubic-bezier(.2,.8,.2,1);
+    max-height: 92vh;
+  }
+  @keyframes slideUp{from{transform:translateY(20px); opacity:0} to{transform:translateY(0); opacity:1}}
+
+  .login-side{
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(243,183,64,0.45), transparent 60%),
+      linear-gradient(160deg, var(--teal), var(--teal-deep) 75%);
+    color: white;
+    padding: 44px 36px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    position: relative; overflow:hidden;
+  }
+  .login-side::after{
+    content:""; position:absolute; bottom:-80px; right:-80px;
+    width:240px; height:240px; border-radius:50%;
+    background: radial-gradient(circle, rgba(239,108,44,0.45), transparent 70%);
+  }
+  .login-side .logo{color: white; position:relative; z-index:2}
+  .login-side-body{position:relative; z-index:2; margin-top: 30px}
+  .login-side h3{font-size:28px; line-height:1.15; margin-bottom: 14px}
+  .login-side h3 em{color: var(--yellow); font-style:italic; font-weight:400}
+  .login-side p{font-size:14.5px; opacity:0.9; line-height: 1.6}
+
+  .selected-role{
+    margin-top: 24px; padding: 14px 16px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    display:flex; align-items:center; gap:12px;
+    position: relative; z-index:2;
+    backdrop-filter: blur(6px);
+  }
+  .selected-role .role-icon{
+    width:36px; height:36px; border-radius: 10px;
+    background: rgba(255,255,255,0.18);
+    display:grid; place-items:center;
+    flex-shrink: 0; color: white;
+  }
+  .selected-role b{display:block; font-size:13.5px; font-family:'Fraunces',serif; font-weight:600}
+  .selected-role span{display:block; font-size:11.5px; opacity:0.8}
+
+  .login-quote{
+    margin-top: 26px; padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    position:relative; z-index:2;
+    font-family:'Fraunces',serif; font-style:italic;
+    font-size: 14px; opacity:0.85;
+  }
+
+  .login-form{ padding: 40px; overflow-y:auto; position: relative }
+  .modal-close{
+    position:absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius:50%;
+    background: var(--bg-2); color: var(--ink);
+    display:grid; place-items:center; font-size:18px;
+    transition: background .2s, transform .2s;
+  }
+  .modal-close:hover{background: var(--ink); color: white; transform: rotate(90deg)}
+
+  .step-roles h2{font-size: 28px; color: var(--ink); margin-bottom: 8px}
+  .step-roles > p.sub{font-size:14.5px; color: var(--ink-soft); margin-bottom: 24px}
+  .role-list{display:flex; flex-direction:column; gap:12px}
+  .role-option{
+    display:flex; align-items:center; gap:16px;
+    padding: 16px 18px; border-radius: 14px;
+    border: 1.5px solid var(--line);
+    cursor:pointer; transition: border-color .2s, background .2s, transform .15s;
+    text-align:left; width:100%; background: white;
+  }
+  .role-option:hover{border-color: var(--accent, var(--teal)); background: color-mix(in srgb, var(--accent) 4%, white); transform: translateY(-1px)}
+  .role-option.contratante{--accent: var(--orange)}
+  .role-option.empreendedor{--accent: var(--teal)}
+  .role-option.candidato{--accent: var(--yellow)}
+  .role-option .ricon{
+    width: 44px; height: 44px; border-radius: 12px;
+    background: color-mix(in srgb, var(--accent) 14%, white);
+    color: var(--accent);
+    display:grid; place-items:center;
+    flex-shrink:0;
+  }
+  .role-option .rtext{flex:1}
+  .role-option .rtext b{display:block; font-family:'Fraunces',serif; font-size:17px; font-weight:600; color: var(--ink); margin-bottom: 3px}
+  .role-option .rtext span{display:block; font-size:13px; color: var(--ink-soft)}
+  .role-option .rarrow{color: var(--ink-soft); font-size: 20px; transition: transform .2s, color .2s}
+  .role-option:hover .rarrow{color: var(--accent); transform: translateX(4px)}
+
+  .step-login{display:none}
+  .step-login.active{display:block; animation: fadeIn .25s}
+  .step-roles{display:block}
+  .step-roles.hidden{display:none}
+
+  .back-btn{
+    background: none; color: var(--ink-soft);
+    font-size:13px; font-weight:600;
+    margin-bottom: 16px; padding: 6px 0;
+    display:inline-flex; align-items:center; gap:6px;
+    transition: color .2s;
+  }
+  .back-btn:hover{color: var(--orange)}
+
+  .login-form h2{font-size: 32px; color: var(--ink); margin-bottom: 6px}
+  .login-form > p.sub{font-size:14.5px; color: var(--ink-soft); margin-bottom: 24px}
+
+  .tabs{
+    display:flex; background: var(--bg-2);
+    border-radius: 999px; padding: 4px; margin-bottom: 24px;
+  }
+  .tab{
+    flex:1; padding: 11px 16px;
+    border-radius: 999px;
+    font-size: 14px; font-weight:600;
+    color: var(--ink-soft); transition: background .2s, color .2s;
+  }
+  .tab.active{background: white; color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.05)}
+
+  .form-group{margin-bottom:16px}
+  .form-group label{
+    display:block; font-size:13px; color: var(--ink-soft);
+    margin-bottom: 7px; font-weight:600;
+  }
+  .form-group input, .form-group select{
+    width:100%; padding: 13px 16px;
+    background: var(--bg);
+    border: 1.5px solid transparent;
+    border-radius: 12px;
+    font-family:inherit; font-size:14.5px; color: var(--ink);
+    transition: border-color .2s, background .2s;
+  }
+  .form-group input:focus, .form-group select:focus{outline:none; border-color: var(--teal); background: white}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+
+  .form-options{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:22px; font-size:13.5px;
+  }
+  .checkbox{display:flex; align-items:center; gap:8px; color:var(--ink-soft); cursor:pointer}
+  .checkbox input{accent-color: var(--teal)}
+  .forgot{color: var(--orange); font-weight:600}
+  .forgot:hover{text-decoration:underline}
+
+  .submit-btn{
+    width:100%; background: var(--ink);
+    color: white; padding: 15px;
+    border-radius: 12px; font-size: 15px; font-weight:600;
+    transition: background .2s, transform .15s;
+  }
+  .submit-btn:hover{background: var(--teal-deep); transform: translateY(-1px)}
+
+  .form-pane{display:none}
+  .form-pane.active{display:block; animation: fadeIn .25s}
+
+  .info-box{
+    margin-top: 18px; padding: 14px 16px;
+    background: color-mix(in srgb, var(--orange) 7%, white);
+    border-left: 3px solid var(--orange);
+    border-radius: 10px;
+    font-size: 13px; color: var(--ink-soft);
+  }
+  .info-box b{color: var(--ink); display:block; margin-bottom: 2px}
+
+  @media (max-width: 760px){
+    .login-card{grid-template-columns:1fr}
+    .login-side{padding: 36px 28px}
+    .login-side h3{font-size:22px}
+    .login-quote{display:none}
+    .login-form{padding: 32px 28px}
+  }
+
+  /* REVEAL */
+  .reveal{opacity:0; transform: translateY(20px); transition: opacity .7s, transform .7s}
+  .reveal.in{opacity:1; transform: translateY(0)}
+
+  /* ============================== */
+  /* MODAL DE AGENDAMENTO (REDESIGN) */
+  /* ============================== */
+  .schedule-modal{
+    position:fixed; inset:0; z-index:200;
+    background: rgba(15,34,53,0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display:none; align-items:center; justify-content:center;
+    padding: 20px;
+    animation: fadeIn .25s ease;
+  }
+  .schedule-modal.active{display:flex}
+  .schedule-card{
+    width: 100%; max-width: 720px;
+    max-height: 92vh;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 30px 80px -20px rgba(15,34,53,0.5);
+    display:flex; flex-direction:column;
+    overflow: hidden;
+    animation: slideUp .35s ease;
+  }
+  @keyframes slideUp{from{transform:translateY(20px); opacity:0} to{transform:translateY(0); opacity:1}}
+
+  .schedule-header{
+    padding: 24px 32px 20px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(243,183,64,0.06), white);
+    flex-shrink: 0;
+  }
+  .schedule-header-top{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom: 18px;
+  }
+  .schedule-title{
+    font-family:'Fraunces',serif;
+    font-size: 22px; font-weight:600;
+    color: var(--ink);
+    display:flex; align-items:center; gap:10px;
+  }
+  .schedule-title svg{width:22px; height:22px; color: var(--orange)}
+  .schedule-close{
+    width:36px; height:36px; border-radius:50%;
+    background: var(--bg-2);
+    color: var(--ink-soft);
+    font-size: 22px; line-height:1;
+    display:grid; place-items:center;
+    transition: all .2s;
+  }
+  .schedule-close:hover{background: var(--ink); color: white; transform: rotate(90deg)}
+
+  /* Progress bar */
+  .progress-wrap{
+    display:flex; align-items:center; gap:8px;
+  }
+  .progress-step{
+    flex:1; height: 6px;
+    background: var(--bg-2);
+    border-radius: 999px;
+    overflow:hidden;
+    position: relative;
+  }
+  .progress-step::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(90deg, var(--orange), var(--yellow));
+    border-radius: 999px;
+    transform: translateX(-100%);
+    transition: transform .4s ease;
+  }
+  .progress-step.done::after,
+  .progress-step.current::after{transform: translateX(0)}
+  .progress-step.current::after{
+    background: linear-gradient(90deg, var(--orange), var(--orange));
+  }
+  .progress-label{
+    font-size: 12px; color: var(--ink-soft);
+    font-weight:600; margin-top: 8px;
+    display:flex; justify-content:space-between;
+  }
+  .progress-label .step-counter{color: var(--orange)}
+
+  .schedule-body{
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 32px 24px;
+  }
+  .schedule-body::-webkit-scrollbar{width:6px}
+  .schedule-body::-webkit-scrollbar-thumb{background: var(--line); border-radius:99px}
+
+  .schedule-step{display:none}
+  .schedule-step.active{display:block; animation: fadeIn .3s ease}
+
+  .step-title{
+    font-family:'Fraunces',serif;
+    font-size: 26px; font-weight:600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .step-subtitle{
+    font-size: 14.5px; color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+
+  /* Option cards (longevo, serviço, etc) */
+  .option-list{
+    display:flex; flex-direction:column; gap: 10px;
+  }
+  .option-card{
+    display:flex; align-items:center; gap:14px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid var(--line);
+    background: white;
+    cursor: pointer;
+    transition: all .2s;
+    text-align:left; width:100%;
+    font-family: inherit;
+  }
+  .option-card:hover{
+    border-color: var(--orange);
+    background: color-mix(in srgb, var(--orange) 4%, white);
+    transform: translateY(-1px);
+  }
+  .option-card.selected{
+    border-color: var(--orange);
+    background: color-mix(in srgb, var(--orange) 7%, white);
+    box-shadow: 0 4px 14px -6px rgba(239,108,44,0.3);
+  }
+  .option-icon{
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+    color: white;
+    display:grid; place-items:center;
+    font-family:'Fraunces',serif; font-weight: 600;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .option-icon.svc-online{background: linear-gradient(135deg, #6c63ff, #4f46e5)}
+  .option-icon.svc-interno{background: linear-gradient(135deg, var(--orange), var(--orange-light))}
+  .option-icon.svc-externo{background: linear-gradient(135deg, var(--yellow), #d99520)}
+  .option-icon svg{width:20px; height:20px}
+  .option-text{flex:1; min-width:0}
+  .option-text b{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-size: 16px; font-weight:600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .option-text span{
+    display:block;
+    font-size: 13px; color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .option-check{
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    display:grid; place-items:center;
+    flex-shrink: 0;
+    transition: all .2s;
+  }
+  .option-card.selected .option-check{
+    border-color: var(--orange);
+    background: var(--orange);
+    color: white;
+  }
+  .option-check svg{width:13px; height:13px; opacity: 0; transition: opacity .2s}
+  .option-card.selected .option-check svg{opacity: 1}
+
+  /* Add longevo button */
+  .add-card{
+    border-style: dashed;
+    color: var(--orange);
+    justify-content: center;
+    padding: 14px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .add-card:hover{
+    background: color-mix(in srgb, var(--orange) 6%, white);
+  }
+  .add-card svg{width:18px; height:18px}
+
+  /* Date/time grid */
+  .date-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr);
+    gap: 10px; margin-bottom: 22px;
+  }
+  .date-card{
+    padding: 12px 8px;
+    border-radius: 12px;
+    border: 1.5px solid var(--line);
+    background: white;
+    cursor: pointer;
+    transition: all .2s;
+    text-align:center;
+    font-family: inherit;
+  }
+  .date-card:hover{border-color: var(--orange)}
+  .date-card.selected{
+    border-color: var(--orange);
+    background: var(--orange);
+    color: white;
+  }
+  .date-card .dow{
+    display:block; font-size:11px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .date-card.selected .dow{color: rgba(255,255,255,0.85)}
+  .date-card .dnum{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-size: 20px; font-weight:600;
+    color: var(--ink);
+  }
+  .date-card.selected .dnum{color: white}
+  .date-card .dmonth{
+    display:block; font-size:10px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .date-card.selected .dmonth{color: rgba(255,255,255,0.85)}
+  .date-card.disabled{
+    opacity: 0.4; cursor: not-allowed;
+    background: var(--bg-2);
+  }
+  .date-card.disabled:hover{border-color: var(--line); transform:none}
+
+  .time-section-title{
+    font-size: 13px; font-weight:600;
+    color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .time-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .time-card{
+    padding: 10px 6px;
+    border-radius: 10px;
+    border: 1.5px solid var(--line);
+    background: white;
+    cursor: pointer;
+    transition: all .2s;
+    text-align:center;
+    font-family: inherit;
+    font-weight: 600; font-size: 13.5px;
+    color: var(--ink);
+  }
+  .time-card:hover:not(.disabled){border-color: var(--orange)}
+  .time-card.selected{
+    border-color: var(--orange);
+    background: var(--orange);
+    color: white;
+  }
+  .time-card.disabled{
+    background: var(--bg-2);
+    color: rgba(58,84,104,0.4);
+    cursor: not-allowed;
+    text-decoration: line-through;
+  }
+
+  /* Professional cards */
+  .pro-card{
+    display:flex; gap:14px; align-items:center;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1.5px solid var(--line);
+    background: white;
+    cursor: pointer;
+    transition: all .2s;
+    text-align: left; width:100%;
+    font-family: inherit;
+    margin-bottom: 10px;
+  }
+  .pro-card:hover{border-color: var(--orange)}
+  .pro-card.selected{
+    border-color: var(--orange);
+    background: color-mix(in srgb, var(--orange) 5%, white);
+  }
+  .pro-avatar{
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+    color: white;
+    display:grid; place-items:center;
+    font-family:'Fraunces',serif; font-weight: 600;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .pro-avatar.alt-1{background: linear-gradient(135deg, var(--orange), var(--orange-light))}
+  .pro-avatar.alt-2{background: linear-gradient(135deg, var(--yellow), #d99520)}
+  .pro-info{flex:1; min-width:0}
+  .pro-info b{
+    display:block;
+    font-family:'Fraunces',serif;
+    font-size: 16px; font-weight:600;
+    color: var(--ink);
+  }
+  .pro-info .pro-spec{
+    display:block; font-size:13px; color: var(--ink-soft);
+    margin-top: 1px;
+  }
+  .pro-info .pro-rating{
+    display:flex; align-items:center; gap:4px;
+    font-size:12px; color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .pro-info .pro-rating .stars{color: var(--yellow); letter-spacing:1px}
+
+  /* Address inline */
+  .address-block{
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+  .address-block .form-group:last-child{margin-bottom:0}
+
+  /* Review card */
+  .review-card{
+    background: linear-gradient(180deg, var(--bg) 0%, white 100%);
+    border: 1.5px solid var(--line);
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 18px;
+  }
+  .review-row{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line);
+    gap: 12px;
+  }
+  .review-row:last-child{border-bottom:none; padding-bottom:0}
+  .review-row:first-child{padding-top:0}
+  .review-label{
+    font-size: 12px; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 110px;
+  }
+  .review-value{
+    font-size: 14.5px; color: var(--ink); font-weight: 500;
+    text-align: right;
+    flex: 1;
+  }
+  .review-value b{font-family:'Fraunces',serif; font-weight: 600}
+
+  .alert-info{
+    background: color-mix(in srgb, var(--teal) 8%, white);
+    border-left: 3px solid var(--teal);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    display:flex; gap:10px; align-items:flex-start;
+    margin-bottom: 16px;
+  }
+  .alert-info svg{
+    width:18px; height:18px;
+    color: var(--teal); flex-shrink:0; margin-top:1px;
+  }
+  .alert-info b{display:block; color: var(--ink); margin-bottom:2px}
+
+  /* Success state */
+  .success-state{
+    text-align: center;
+    padding: 20px 10px;
+  }
+  .success-icon{
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+    color: white;
+    display:grid; place-items:center;
+    margin: 0 auto 20px;
+    box-shadow: 0 12px 30px -8px rgba(13,124,126,0.45);
+    animation: popIn .5s ease;
+  }
+  @keyframes popIn{
+    0%{transform:scale(0); opacity:0}
+    60%{transform:scale(1.1)}
+    100%{transform:scale(1); opacity:1}
+  }
+  .success-icon svg{width:40px; height:40px}
+  .success-state h3{
+    font-family:'Fraunces',serif;
+    font-size: 26px; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .success-state p{
+    font-size: 15px; color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+
+  /* Footer with navigation */
+  .schedule-footer{
+    padding: 18px 32px;
+    border-top: 1px solid var(--line);
+    background: white;
+    display: flex; gap: 12px; align-items: center;
+    flex-shrink: 0;
+  }
+  .nav-btn{
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-weight: 600; font-size: 14.5px;
+    transition: all .2s;
+    font-family: inherit;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .nav-btn-back{
+    background: var(--bg-2);
+    color: var(--ink);
+  }
+  .nav-btn-back:hover{background: var(--line)}
+  .nav-btn-next{
+    background: var(--orange);
+    color: white;
+    flex: 1;
+    justify-content: center;
+    box-shadow: 0 8px 20px -8px rgba(239,108,44,0.5);
+  }
+  .nav-btn-next:hover:not(:disabled){
+    background: #d75c20;
+    transform: translateY(-1px);
+  }
+  .nav-btn-next:disabled{
+    opacity: 0.45; cursor: not-allowed;
+    box-shadow: none;
+  }
+  .nav-btn-next svg{width:16px; height:16px}
+
+  /* Login error */
+  .login-error,
+  .signup-error{
+    background: color-mix(in srgb, #e74c3c 10%, white);
+    border-left: 3px solid #e74c3c;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px; color: #c0392b;
+    margin-bottom: 14px;
+    display: none;
+    animation: shake .35s ease;
+  }
+  .login-error.show,
+  .signup-error.show{display:block}
+  .form-group input.invalid{
+    border-color: #e74c3c !important;
+    background: color-mix(in srgb, #e74c3c 5%, white) !important;
+  }
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-4px)}
+    75%{transform:translateX(4px)}
+  }
+
+  @media (max-width: 600px){
+    .schedule-card{max-height: 100vh; border-radius: 0}
+    .schedule-modal{padding:0}
+    .schedule-header{padding: 18px 20px 14px}
+    .schedule-body{padding: 22px 20px}
+    .schedule-footer{padding: 14px 20px}
+    .step-title{font-size: 22px}
+    .date-grid{grid-template-columns: repeat(3, 1fr)}
+    .time-grid{grid-template-columns: repeat(3, 1fr)}
+    .review-row{flex-direction: column; gap: 4px}
+    .review-value{text-align: left}
+    .review-label{min-width: 0}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo-v" viewBox="0 0 100 100">
+    <path d="M 22 22 Q 22 16 28 16 Q 36 16 39 28 L 50 70 L 50 88 Q 48 88 44 80 L 24 38 Q 22 30 22 22 Z" fill="#18a5a7"/>
+    <path d="M 78 22 Q 78 16 72 16 Q 64 16 61 28 L 50 70 L 50 88 Q 52 88 56 80 L 76 38 Q 78 30 78 22 Z" fill="#ef6c2c"/>
+    <circle cx="32" cy="9" r="5" fill="#18a5a7"/>
+    <circle cx="68" cy="9" r="5" fill="#ef6c2c"/>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark"><svg><use href="#logo-v"/></svg></span>
+      <span>Vivmais</span>
+    </a>
+    <div class="nav-links">
+      <a href="#acessar">Acessar plataforma</a>
+      <a href="#como">Como funciona</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-cta-secondary" onclick="openLogin()">Entrar</button>
+      <button class="nav-cta" onclick="openLogin('contratante')">Acessar plataforma</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text reveal">
+    <span class="eyebrow"><span class="dot"></span> Saúde · Longevidade · Bem-estar</span>
+    <h1>Cuidamos de você e de <em>quem você ama.</em></h1>
+    <p class="lead">Conectamos pessoas longevas e famílias aos Empreendedores do Cuidado — profissionais maduros, qualificados em saúde, gerontologia e bem-estar. Tudo em uma plataforma com agendamento, pagamento por voucher e acompanhamento.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openLogin()">
+        Acessar a plataforma
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <a href="#como" class="btn-ghost">Como funciona</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><div><b>4.9</b><span style="color:var(--yellow); letter-spacing:1px; font-size:13px">★★★★★</span></div></div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><div><b>1.000+</b>famílias atendidas</div></div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><div><b>50+</b>cidades</div></div>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal">
+    <div class="hero-floater">
+      <span class="green-dot"></span>
+      <span><b>Profissionais</b> disponíveis agora</span>
+    </div>
+    <div class="phone-mockup">
+      <div class="phone-top">
+        <div class="mlogo"><svg viewBox="0 0 100 100"><use href="#logo-v"/></svg></div>
+        <h4>Saúde &amp; Bem-Estar</h4>
+      </div>
+      <div class="phone-body">
+        <div class="phone-input"><small>E-mail</small>seu@email.com</div>
+        <div class="phone-input"><small>Senha</small>••••••••</div>
+        <div class="phone-btn">ENTRAR</div>
+        <div class="phone-link">Novo? <b>Inscrever-se</b></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="star-rating">★★★★★</div>
+      <div class="hero-card-text">
+        <b>"Atendimento humanizado"</b>
+        Luis Lustig · Cliente Vivmais
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ACCESS PORTAL -->
+<section class="access-portal" id="acessar">
+  <div class="access-inner">
+    <div class="access-head reveal">
+      <span style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange); font-weight:700; margin-bottom:14px; display:block">Acesso à plataforma</span>
+      <h2>Qual é o seu <em>perfil?</em></h2>
+      <p>A Vivmais opera com três tipos de acesso. Escolha o seu para entrar ou criar sua conta.</p>
+    </div>
+
+    <div class="access-grid">
+      <div class="access-card contratante reveal">
+        <div class="access-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <span class="who">Contratante</span>
+        <h3>Você ou sua família</h3>
+        <p>Para quem contrata serviços para si ou para até 4 longevos da família. Agende cuidados, atividades e acompanhamentos.</p>
+        <ul class="access-features">
+          <li>Cadastrar até 4 longevos</li>
+          <li>Escolher profissional e horário</li>
+          <li>Pagar com voucher ou cartão</li>
+          <li>Acompanhar em tempo real</li>
+        </ul>
+        <button class="access-btn" onclick="openLogin('contratante')">
+          Entrar como Contratante
+          <span class="arrow">→</span>
+        </button>
+      </div>
+
+      <div class="access-card empreendedor reveal">
+        <div class="access-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <span class="who">Empreendedor</span>
+        <h3>Profissional cadastrado</h3>
+        <p>Para o Empreendedor do Cuidado Social já aprovado. Gerencie sua agenda, escala e atendimentos.</p>
+        <ul class="access-features">
+          <li>Gerenciar escala e agenda</li>
+          <li>Replicar e bloquear datas</li>
+          <li>Atualizar perfil e mini-bio</li>
+          <li>Acompanhar atendimentos</li>
+        </ul>
+        <button class="access-btn" onclick="openLogin('empreendedor')">
+          Entrar como Empreendedor
+          <span class="arrow">→</span>
+        </button>
+      </div>
+
+      <div class="access-card candidato reveal">
+        <div class="access-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <span class="who">Candidato</span>
+        <h3>Quero fazer parte</h3>
+        <p>Para profissionais que desejam se candidatar à rede Vivmais. Envie seus documentos e currículo para avaliação.</p>
+        <ul class="access-features">
+          <li>Cadastro de pré-seleção</li>
+          <li>Upload de documentos</li>
+          <li>Cadastro de competências</li>
+          <li>Acompanhar status</li>
+        </ul>
+        <button class="access-btn" onclick="openLogin('candidato')">
+          Candidate-se
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="como">
+  <div class="how-inner">
+    <div class="section-head reveal">
+      <span class="tag">Como funciona</span>
+      <h2>Em 4 passos, do <em>cadastro ao cuidado</em></h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <h4>Crie sua conta</h4>
+        <p>Cadastro rápido como Contratante. Adicione até 4 longevos da família para gerenciar serviços.</p>
+      </div>
+      <div class="how-step reveal">
+        <h4>Escolha o serviço</h4>
+        <p>Online, em domicílio ou externo. Mais de 30 atividades — de yoga a companhia para consulta médica.</p>
+      </div>
+      <div class="how-step reveal">
+        <h4>Selecione o profissional</h4>
+        <p>Veja perfil, mini-bio e avaliações. Filtre por gênero do profissional e disponibilidade.</p>
+      </div>
+      <div class="how-step reveal">
+        <h4>Agende e pague</h4>
+        <p>Confirme data e horário. Pague por voucher, cartão ou Pix — e acompanhe o atendimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="login-card">
+    <div class="login-side">
+      <a href="#" class="logo">
+        <span class="logo-mark"><svg><use href="#logo-v"/></svg></span>
+        <span>Vivmais</span>
+      </a>
+
+      <div class="login-side-body">
+        <h3 id="sideTitle">Bem-vindo à <em>plataforma</em> Vivmais</h3>
+        <p id="sideText">Acesse com seu perfil para gerenciar agendamentos, profissionais e cuidados.</p>
+
+        <div class="selected-role" id="sideRole" style="display:none">
+          <div class="role-icon" id="sideRoleIcon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <b id="sideRoleName">Contratante</b>
+            <span id="sideRoleDesc">Você ou sua família</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="login-quote">"Cuidamos da sua família como se fosse a nossa."</p>
+    </div>
+
+    <div class="login-form">
+      <button class="modal-close" onclick="closeLogin()" aria-label="Fechar">×</button>
+
+      <!-- Step 1: Role selection -->
+      <div class="step-roles" id="stepRoles">
+        <h2>Como você quer entrar?</h2>
+        <p class="sub">Escolha o tipo de acesso que faz sentido para você.</p>
+
+        <div class="role-list">
+          <button class="role-option contratante" onclick="selectRole('contratante')">
+            <div class="ricon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="rtext"><b>Sou Contratante</b><span>Quero contratar serviços para mim ou minha família</span></div>
+            <span class="rarrow">→</span>
+          </button>
+
+          <button class="role-option empreendedor" onclick="return false" disabled style="opacity:0.5; cursor:not-allowed">
+            <div class="ricon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="rtext"><b>Sou Empreendedor do Cuidado</b><span>Já sou profissional aprovado na rede Vivmais</span></div>
+            <span class="rarrow">→</span>
+          </button>
+
+          <button class="role-option candidato" onclick="return false" disabled style="opacity:0.5; cursor:not-allowed">
+            <div class="ricon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="rtext"><b>Sou Candidato</b><span>Quero me candidatar à rede de profissionais</span></div>
+            <span class="rarrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Login form -->
+      <div class="step-login" id="stepLogin">
+        <button class="back-btn" onclick="backToRoles()">← Voltar</button>
+
+        <h2 id="formTitle">Entrar</h2>
+        <p class="sub" id="formSub">Acesse sua conta para continuar.</p>
+
+        <div class="tabs" id="loginTabs">
+          <button class="tab active" onclick="switchTab('login', this)">Entrar</button>
+          <button class="tab" onclick="switchTab('signup', this)" id="signupTab">Criar conta</button>
+        </div>
+
+        <form class="form-pane active" id="pane-login" onsubmit="event.preventDefault(); handleLogin()">
+          <div class="login-error" id="loginError">
+            <b>Credenciais inválidas.</b> Use e-mail "Teste" e senha "1234" para entrar na demo.
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="text" id="loginEmail" placeholder="Teste" required>
+          </div>
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" id="loginPassword" placeholder="1234" required>
+          </div>
+          <div class="form-options">
+            <label class="checkbox"><input type="checkbox"> Lembrar-me</label>
+            <a href="#" class="forgot">Esqueci a senha</a>
+          </div>
+          <button type="submit" class="submit-btn">Entrar</button>
+          <div class="info-box">
+            <b>Dica</b>
+            <span id="loginInfoText">Use o mesmo e-mail e senha do app Vivmais.</span>
+          </div>
+        </form>
+
+        <form class="form-pane" id="pane-signup" onsubmit="event.preventDefault(); handleSignup()" novalidate>
+          <div class="signup-error" id="signupError">
+            <b>Verifique os campos.</b> <span id="signupErrorMsg">Confira as informações destacadas e tente novamente.</span>
+          </div>
+          <div class="form-group">
+            <label>Nome completo</label>
+            <input type="text" id="signupName" placeholder="Seu nome" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" id="signupEmail" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>CPF</label>
+              <input type="text" id="signupCpf" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" required>
+            </div>
+            <div class="form-group">
+              <label>Telefone</label>
+              <input type="tel" id="signupPhone" inputmode="numeric" placeholder="(11) 99999-9999" maxlength="15" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Senha</label>
+              <input type="password" id="signupPassword" placeholder="Crie uma senha" required>
+            </div>
+            <div class="form-group">
+              <label>Confirmar senha</label>
+              <input type="password" id="signupPassword2" placeholder="Repita a senha" required>
+            </div>
+          </div>
+
+          <div id="candidatoFields" style="display:none">
+            <div class="form-group">
+              <label>CEP</label>
+              <input type="text" placeholder="00000-000">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Instituição (formação)</label>
+                <input type="text" placeholder="Ex: USP, FGV...">
+              </div>
+              <div class="form-group">
+                <label>Ano de formação</label>
+                <input type="text" placeholder="AAAA">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox"><input type="checkbox" id="signupTerms" required> Aceito os Termos de Uso e Política de Privacidade</label>
+          </div>
+          <button type="submit" class="submit-btn" id="signupBtn">Criar conta</button>
+          <div class="info-box">
+            <b>O que acontece a seguir?</b>
+            <span id="signupInfoText">Após o cadastro, você poderá agendar serviços imediatamente.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- MODAL DE AGENDAMENTO (REDESIGN PROPOSTO)     -->
+<!-- Fluxo guiado em 8 etapas conforme proposta   -->
+<!-- ============================================ -->
+<div class="schedule-modal" id="scheduleModal">
+  <div class="schedule-card">
+    <div class="schedule-header">
+      <div class="schedule-header-top">
+        <div class="schedule-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Agendar serviço
+        </div>
+        <button class="schedule-close" onclick="closeSchedule()" aria-label="Fechar">×</button>
+      </div>
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-step current"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+      </div>
+      <div class="progress-label">
+        <span id="stepName">Escolher longevo</span>
+        <span class="step-counter"><span id="stepCurrent">1</span> de 8</span>
+      </div>
+    </div>
+
+    <div class="schedule-body">
+
+      <!-- STEP 1: Escolher longevo -->
+      <div class="schedule-step active" data-step="1">
+        <h3 class="step-title">Para quem é o atendimento?</h3>
+        <p class="step-subtitle">Escolha o longevo que receberá o cuidado.</p>
+        <div class="option-list" id="longevoList">
+          <button type="button" class="option-card" onclick="selectOption(this, 'longevo', 'Maria Silva (mãe)')">
+            <div class="option-icon">M</div>
+            <div class="option-text">
+              <b>Maria Silva</b>
+              <span>Mãe · 72 anos · São Paulo, SP</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+          <button type="button" class="option-card" onclick="selectOption(this, 'longevo', 'João Silva (pai)')">
+            <div class="option-icon">J</div>
+            <div class="option-text">
+              <b>João Silva</b>
+              <span>Pai · 75 anos · São Paulo, SP</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+          <button type="button" class="option-card add-card" id="addLongevoBtn" onclick="openAddLongevo()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Cadastrar novo longevo
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Tipo de serviço -->
+      <div class="schedule-step" data-step="2">
+        <h3 class="step-title">Qual o tipo de atendimento?</h3>
+        <p class="step-subtitle">Cada modalidade atende a uma necessidade diferente. Veja qual faz mais sentido.</p>
+        <div class="option-list">
+          <button type="button" class="option-card" onclick="selectOption(this, 'tipoServico', 'Online'); requireAddress(false)">
+            <div class="option-icon svc-online">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="option-text">
+              <b>Online</b>
+              <span>Atendimento remoto por vídeo. Ideal para consultas, orientação e acompanhamento à distância.</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+          <button type="button" class="option-card" onclick="selectOption(this, 'tipoServico', 'Interno'); requireAddress(true)">
+            <div class="option-icon svc-interno">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="option-text">
+              <b>Interno</b>
+              <span>Atendimento em domicílio. O profissional vai até a residência do longevo.</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+          <button type="button" class="option-card" onclick="selectOption(this, 'tipoServico', 'Externo'); requireAddress(true)">
+            <div class="option-icon svc-externo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="option-text">
+              <b>Externo</b>
+              <span>Acompanhamento fora de casa. Ex.: idas ao médico, passeios, eventos sociais.</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Serviço -->
+      <div class="schedule-step" data-step="3">
+        <h3 class="step-title">Qual serviço você precisa?</h3>
+        <p class="step-subtitle">Escolha entre as atividades disponíveis para o tipo selecionado.</p>
+        <div class="option-list">
+          <button type="button" class="option-card" onclick="selectOption(this, 'servico', 'Yoga adaptado')">
+            <div class="option-icon">Y</div>
+            <div class="option-text">
+              <b>Yoga adaptado</b>
+              <span>Sessão de 60 min focada em mobilidade e respiração</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+          <button type="button" class="option-card" onclick="selectOption(this, 'servico', 'Companhia para consulta')">
+            <div class="option-icon">C</div>
+            <div class="option-text">
+              <b>Companhia para consulta</b>
+              <span>Acompanhamento em consulta médica, anotação de orientações</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+          <button type="button" class="option-card" onclick="selectOption(this, 'servico', 'Fisioterapia preventiva')">
+            <div class="option-icon">F</div>
+            <div class="option-text">
+              <b>Fisioterapia preventiva</b>
+              <span>Exercícios para mobilidade, equilíbrio e prevenção de quedas</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+          <button type="button" class="option-card" onclick="selectOption(this, 'servico', 'Atividade cognitiva')">
+            <div class="option-icon">A</div>
+            <div class="option-text">
+              <b>Atividade cognitiva</b>
+              <span>Jogos, conversas guiadas e exercícios de memória</span>
+            </div>
+            <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Local -->
+      <div class="schedule-step" data-step="4">
+        <h3 class="step-title">Onde será o atendimento?</h3>
+        <p class="step-subtitle" id="step4Sub">Confirme ou edite o endereço diretamente aqui — sem sair do agendamento.</p>
+
+        <div id="addressBlock" class="address-block">
+          <div class="form-group">
+            <label>CEP</label>
+            <input type="text" placeholder="00000-000" value="00000-000">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Rua</label>
+              <input type="text" value="Teste">
+            </div>
+            <div class="form-group">
+              <label>Número</label>
+              <input type="text" value="1578">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Bairro</label>
+              <input type="text" value="Teste">
+            </div>
+            <div class="form-group">
+              <label>Complemento</label>
+              <input type="text" placeholder="Apto, bloco...">
+            </div>
+          </div>
+        </div>
+
+        <div id="onlineBlock" style="display:none">
+          <div class="alert-info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>
+              <b>Atendimento online</b>
+              O link da sessão será enviado por e-mail e no app, 30 minutos antes do horário marcado.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5: Data e horário -->
+      <div class="schedule-step" data-step="5">
+        <h3 class="step-title">Quando deve acontecer?</h3>
+        <p class="step-subtitle">Datas e horários sem disponibilidade ficam bloqueados automaticamente.</p>
+
+        <div class="time-section-title">Escolha a data</div>
+        <div class="date-grid" id="dateGrid"></div>
+
+        <div class="time-section-title">Escolha o horário</div>
+        <div class="time-grid" id="timeGrid">
+          <button type="button" class="time-card disabled">08:00</button>
+          <button type="button" class="time-card" onclick="selectTime(this, '09:00')">09:00</button>
+          <button type="button" class="time-card" onclick="selectTime(this, '10:00')">10:00</button>
+          <button type="button" class="time-card disabled">11:00</button>
+          <button type="button" class="time-card" onclick="selectTime(this, '14:00')">14:00</button>
+          <button type="button" class="time-card" onclick="selectTime(this, '15:00')">15:00</button>
+          <button type="button" class="time-card disabled">16:00</button>
+          <button type="button" class="time-card" onclick="selectTime(this, '17:00')">17:00</button>
+        </div>
+      </div>
+
+      <!-- STEP 6: Profissional -->
+      <div class="schedule-step" data-step="6">
+        <h3 class="step-title">Quem você prefere?</h3>
+        <p class="step-subtitle">Profissionais disponíveis para a data e serviço selecionados.</p>
+        <button type="button" class="pro-card" onclick="selectOption(this, 'profissional', 'Ana Beatriz Costa')">
+          <div class="pro-avatar">A</div>
+          <div class="pro-info">
+            <b>Ana Beatriz Costa</b>
+            <span class="pro-spec">Fisioterapeuta · 12 anos de experiência</span>
+            <span class="pro-rating"><span class="stars">★★★★★</span> 4.9 · 184 atendimentos</span>
+          </div>
+          <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </button>
+        <button type="button" class="pro-card" onclick="selectOption(this, 'profissional', 'Carlos Mendes')">
+          <div class="pro-avatar alt-1">C</div>
+          <div class="pro-info">
+            <b>Carlos Mendes</b>
+            <span class="pro-spec">Educador físico · Especialista em longevidade</span>
+            <span class="pro-rating"><span class="stars">★★★★★</span> 4.8 · 96 atendimentos</span>
+          </div>
+          <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </button>
+        <button type="button" class="pro-card" onclick="selectOption(this, 'profissional', 'Renata Oliveira')">
+          <div class="pro-avatar alt-2">R</div>
+          <div class="pro-info">
+            <b>Renata Oliveira</b>
+            <span class="pro-spec">Gerontóloga · Acompanhamento integral</span>
+            <span class="pro-rating"><span class="stars">★★★★★</span> 5.0 · 211 atendimentos</span>
+          </div>
+          <div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        </button>
+      </div>
+
+      <!-- STEP 7: Revisar -->
+      <div class="schedule-step" data-step="7">
+        <h3 class="step-title">Revise antes de confirmar</h3>
+        <p class="step-subtitle">Confira todos os detalhes do agendamento abaixo.</p>
+        <div class="review-card">
+          <div class="review-row">
+            <span class="review-label">Longevo</span>
+            <span class="review-value" id="rvLongevo">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Tipo</span>
+            <span class="review-value" id="rvTipo">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Serviço</span>
+            <span class="review-value" id="rvServico">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Local</span>
+            <span class="review-value" id="rvLocal">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Data e horário</span>
+            <span class="review-value" id="rvDataHora">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-label">Profissional</span>
+            <span class="review-value" id="rvProfissional">—</span>
+          </div>
+        </div>
+        <div class="alert-info">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div>
+            <b>Política de cancelamento</b>
+            Cancelamentos com até 12h de antecedência não geram cobrança. Após esse prazo, será cobrada taxa de 30%.
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 8: Sucesso -->
+      <div class="schedule-step" data-step="8">
+        <div class="success-state">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Agendamento confirmado!</h3>
+          <p>Você receberá um e-mail e uma notificação no app com todos os detalhes. O profissional será avisado e confirmará em até 2 horas.</p>
+          <div class="review-card" style="text-align:left">
+            <div class="review-row">
+              <span class="review-label">Protocolo</span>
+              <span class="review-value"><b>#VM-2026-0518</b></span>
+            </div>
+            <div class="review-row">
+              <span class="review-label">Status</span>
+              <span class="review-value" style="color:var(--teal-deep)"><b>Aguardando profissional</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="schedule-footer" id="scheduleFooter">
+      <button type="button" class="nav-btn nav-btn-back" id="btnBack" onclick="prevStep()" style="display:none">← Voltar</button>
+      <button type="button" class="nav-btn nav-btn-next" id="btnNext" onclick="nextStep()" disabled>
+        Continuar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- MODAL: Cadastrar novo longevo                -->
+<!-- ============================================ -->
+<div class="schedule-modal" id="addLongevoModal" style="z-index: 200;">
+  <div class="schedule-card" style="max-width: 460px;">
+    <div class="schedule-header">
+      <div class="schedule-header-top">
+        <div class="schedule-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          Cadastrar novo longevo
+        </div>
+        <button class="schedule-close" onclick="closeAddLongevo()" aria-label="Fechar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="schedule-body">
+      <p class="step-subtitle" style="margin-bottom: 18px;">Preencha os dados do longevo que receberá o cuidado. Você pode adicionar até 4 longevos.</p>
+
+      <form id="newLongevoForm" onsubmit="event.preventDefault(); handleAddLongevo()" novalidate style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="signup-error" id="newLongevoError">
+          <b>Verifique os campos.</b> <span id="newLongevoErrorMsg">Preencha as informações destacadas.</span>
+        </div>
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input type="text" id="newLongevoName" placeholder="Ex: Ana Souza" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Parentesco</label>
+            <input type="text" id="newLongevoRel" placeholder="Mãe, pai, avó..." required>
+          </div>
+          <div class="form-group">
+            <label>Idade</label>
+            <input type="text" id="newLongevoAge" inputmode="numeric" maxlength="3" placeholder="Ex: 72" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Cidade</label>
+          <input type="text" id="newLongevoCity" placeholder="Ex: São Paulo, SP" required>
+        </div>
+      </form>
+    </div>
+    <div class="schedule-footer">
+      <button type="button" class="nav-btn nav-btn-back" onclick="closeAddLongevo()">Cancelar</button>
+      <button type="button" class="nav-btn nav-btn-next" onclick="handleAddLongevo()">
+        Adicionar longevo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('loginModal');
+  const stepRoles = document.getElementById('stepRoles');
+  const stepLogin = document.getElementById('stepLogin');
+  const sideRole = document.getElementById('sideRole');
+  const sideRoleIcon = document.getElementById('sideRoleIcon');
+  const sideRoleName = document.getElementById('sideRoleName');
+  const sideRoleDesc = document.getElementById('sideRoleDesc');
+  const sideTitle = document.getElementById('sideTitle');
+  const sideText = document.getElementById('sideText');
+  const formTitle = document.getElementById('formTitle');
+  const formSub = document.getElementById('formSub');
+  const candidatoFields = document.getElementById('candidatoFields');
+  const signupTab = document.getElementById('signupTab');
+  const loginInfoText = document.getElementById('loginInfoText');
+  const signupInfoText = document.getElementById('signupInfoText');
+  const signupBtn = document.getElementById('signupBtn');
+
+  const ICONS = {
+    contratante: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+    empreendedor: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+    candidato: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>'
+  };
+
+  const ROLES = {
+    contratante: {
+      name: 'Contratante',
+      desc: 'Você ou sua família',
+      sideTitle: 'Cuide de quem <em>você ama</em>',
+      sideText: 'Acesse para agendar serviços, gerenciar até 4 longevos e acompanhar seus atendimentos.',
+      formTitle: 'Entrar como Contratante',
+      formSub: 'Agende serviços para você ou sua família.',
+      loginInfo: 'Use o mesmo e-mail e senha que você cadastrou no app Vivmais.',
+      signupInfo: 'Após criar a conta, você cadastra os longevos e já pode agendar.',
+      signupCTA: 'Criar conta de Contratante',
+      hasSignup: true,
+      extraFields: false
+    },
+    empreendedor: {
+      name: 'Empreendedor',
+      desc: 'Profissional já aprovado',
+      sideTitle: 'Sua agenda, <em>seus atendimentos</em>',
+      sideText: 'Gerencie sua escala, replicar dias, bloquear férias e atualizar seu perfil profissional.',
+      formTitle: 'Entrar como Empreendedor',
+      formSub: 'Acesse o canal de gestão da sua agenda.',
+      loginInfo: 'Acesso exclusivo para Empreendedores do Cuidado já aprovados na rede.',
+      signupInfo: '',
+      signupCTA: '',
+      hasSignup: false,
+      extraFields: false
+    },
+    candidato: {
+      name: 'Candidato',
+      desc: 'Quero entrar para a rede',
+      sideTitle: 'Faça parte da <em>rede Vivmais</em>',
+      sideText: 'Profissionais comprometidos em oferecer cuidado e bem-estar. Envie sua candidatura e nossa equipe entra em contato.',
+      formTitle: 'Candidate-se à Vivmais',
+      formSub: 'Crie sua conta de candidato e envie seus documentos.',
+      loginInfo: 'Já tem cadastro? Entre para acompanhar o status da sua candidatura.',
+      signupInfo: 'Após o pré-cadastro, você fará upload de currículo, documentos e cadastrará suas competências.',
+      signupCTA: 'Me candidatar',
+      hasSignup: true,
+      extraFields: true
+    }
+  };
+
+  function openLogin(role){
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if(role){ selectRole(role); } else { backToRoles(); }
+  }
+  function closeLogin(){
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function selectRole(role){
+    const r = ROLES[role];
+    if(!r) return;
+    stepRoles.classList.add('hidden');
+    stepLogin.classList.add('active');
+    sideRole.style.display = 'flex';
+    sideRoleIcon.innerHTML = ICONS[role];
+    sideRoleName.textContent = r.name;
+    sideRoleDesc.textContent = r.desc;
+    sideTitle.innerHTML = r.sideTitle;
+    sideText.textContent = r.sideText;
+    formTitle.textContent = r.formTitle;
+    formSub.textContent = r.formSub;
+    loginInfoText.textContent = r.loginInfo;
+    if(r.hasSignup){
+      signupTab.style.display = 'block';
+      signupInfoText.textContent = r.signupInfo;
+      signupBtn.textContent = r.signupCTA;
+    } else {
+      signupTab.style.display = 'none';
+      switchTab('login', document.querySelector('.tab'));
+    }
+    candidatoFields.style.display = r.extraFields ? 'block' : 'none';
+  }
+
+  function backToRoles(){
+    stepRoles.classList.remove('hidden');
+    stepLogin.classList.remove('active');
+    sideRole.style.display = 'none';
+    sideTitle.innerHTML = 'Bem-vindo à <em>plataforma</em> Vivmais';
+    sideText.textContent = 'Acesse com seu perfil para gerenciar agendamentos, profissionais e cuidados.';
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelector('.tab').classList.add('active');
+    document.querySelectorAll('.form-pane').forEach(p => p.classList.remove('active'));
+    document.getElementById('pane-login').classList.add('active');
+  }
+
+  function switchTab(which, btn){
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    document.querySelectorAll('.form-pane').forEach(p => p.classList.remove('active'));
+    document.getElementById('pane-' + which).classList.add('active');
+  }
+
+  function handleLogin(){
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const errorBox = document.getElementById('loginError');
+
+    if(email === 'Teste' && password === '1234'){
+      errorBox.classList.remove('show');
+      closeLogin();
+      // pequeno delay para a transição visual
+      setTimeout(() => openSchedule(), 200);
+    } else {
+      errorBox.classList.add('show');
+    }
+  }
+
+  modal.addEventListener('click', e => { if(e.target === modal) closeLogin(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('active')) closeLogin(); });
+
+  function toggleFaq(btn){
+    const item = btn.parentElement;
+    item.classList.toggle('open');
+  }
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ============================================ */
+  /* FLUXO DE AGENDAMENTO (REDESIGN)              */
+  /* Implementa as propostas das seções 10 e 11   */
+  /* ============================================ */
+  const scheduleModal = document.getElementById('scheduleModal');
+  const stepNames = [
+    'Escolher longevo',
+    'Tipo de serviço',
+    'Escolher serviço',
+    'Definir local',
+    'Data e horário',
+    'Escolher profissional',
+    'Revisar informações',
+    'Confirmação'
+  ];
+  const ctaLabels = [
+    'Continuar',
+    'Continuar',
+    'Continuar',
+    'Confirmar local',
+    'Continuar',
+    'Continuar',
+    'Confirmar agendamento',
+    'Fechar'
+  ];
+
+  let currentStep = 1;
+  let scheduleData = {
+    longevo: null,
+    tipoServico: null,
+    servico: null,
+    endereco: 'Teste',
+    data: null,
+    horario: null,
+    profissional: null
+  };
+  let needsAddress = true;
+
+  function openSchedule(){
+    scheduleModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    currentStep = 1;
+    scheduleData = {
+      longevo: null, tipoServico: null, servico: null,
+      endereco: 'Teste',
+      data: null, horario: null, profissional: null
+    };
+    needsAddress = true;
+    // limpar seleções visuais
+    document.querySelectorAll('.schedule-modal .option-card.selected, .schedule-modal .pro-card.selected, .schedule-modal .time-card.selected, .schedule-modal .date-card.selected')
+      .forEach(el => el.classList.remove('selected'));
+    renderDates();
+    showStep(1);
+  }
+
+  function closeSchedule(){
+    scheduleModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  scheduleModal.addEventListener('click', e => {
+    if(e.target === scheduleModal) closeSchedule();
+  });
+
+  function showStep(n){
+    currentStep = n;
+    document.querySelectorAll('.schedule-step').forEach(s => s.classList.remove('active'));
+    const step = document.querySelector('.schedule-step[data-step="' + n + '"]');
+    if(step) step.classList.add('active');
+
+    // atualizar progresso
+    const progressSteps = document.querySelectorAll('#progressWrap .progress-step');
+    progressSteps.forEach((p, idx) => {
+      p.classList.remove('done', 'current');
+      if(idx + 1 < n) p.classList.add('done');
+      else if(idx + 1 === n) p.classList.add('current');
+    });
+
+    document.getElementById('stepCurrent').textContent = n;
+    document.getElementById('stepName').textContent = stepNames[n-1];
+
+    // botões de navegação
+    document.getElementById('btnBack').style.display = (n === 1 || n === 8) ? 'none' : 'inline-flex';
+    const btnNext = document.getElementById('btnNext');
+
+    if(n === 8){
+      btnNext.innerHTML = 'Fechar';
+      btnNext.disabled = false;
+      btnNext.onclick = closeSchedule;
+    } else {
+      btnNext.onclick = nextStep;
+      // texto do CTA — sempre regenera o botão completo (com SVG) para evitar bug
+      // do botão ficar preso como "Fechar" ao reabrir o modal
+      const label = ctaLabels[n-1];
+      const showArrow = (n !== 7);
+      btnNext.innerHTML = label + (showArrow
+        ? ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+        : '');
+      validateStep();
+    }
+
+    // popular review na etapa 7
+    if(n === 7) populateReview();
+
+    // pular etapa 4 se for online (mas mostramos para confirmar local virtual)
+    document.querySelector('.schedule-body').scrollTop = 0;
+  }
+
+  function selectOption(el, field, value){
+    // remover seleção dos irmãos
+    const parent = el.parentElement;
+    parent.querySelectorAll('.option-card, .pro-card').forEach(c => {
+      if(!c.classList.contains('add-card')) c.classList.remove('selected');
+    });
+    el.classList.add('selected');
+    scheduleData[field] = value;
+    validateStep();
+  }
+
+  function selectTime(el, time){
+    document.querySelectorAll('#timeGrid .time-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    scheduleData.horario = time;
+    validateStep();
+  }
+
+  function selectDate(el, dateStr){
+    document.querySelectorAll('#dateGrid .date-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    scheduleData.data = dateStr;
+    validateStep();
+  }
+
+  function requireAddress(needs){
+    needsAddress = needs;
+    document.getElementById('addressBlock').style.display = needs ? 'block' : 'none';
+    document.getElementById('onlineBlock').style.display = needs ? 'none' : 'block';
+    document.getElementById('step4Sub').textContent = needs
+      ? 'Confirme ou edite o endereço diretamente aqui — sem sair do agendamento.'
+      : 'Como o atendimento é online, não é necessário endereço físico.';
+    if(!needs) scheduleData.endereco = 'Atendimento online (link enviado por e-mail)';
+  }
+
+  function validateStep(){
+    const btn = document.getElementById('btnNext');
+    let valid = false;
+    switch(currentStep){
+      case 1: valid = !!scheduleData.longevo; break;
+      case 2: valid = !!scheduleData.tipoServico; break;
+      case 3: valid = !!scheduleData.servico; break;
+      case 4: valid = true; break; // endereço já tem valor padrão
+      case 5: valid = !!scheduleData.data && !!scheduleData.horario; break;
+      case 6: valid = !!scheduleData.profissional; break;
+      case 7: valid = true; break;
+      default: valid = true;
+    }
+    btn.disabled = !valid;
+  }
+
+  function nextStep(){
+    if(currentStep < 8) showStep(currentStep + 1);
+  }
+
+  function prevStep(){
+    if(currentStep > 1) showStep(currentStep - 1);
+  }
+
+  function populateReview(){
+    document.getElementById('rvLongevo').innerHTML = '<b>' + (scheduleData.longevo || '—') + '</b>';
+    document.getElementById('rvTipo').textContent = scheduleData.tipoServico || '—';
+    document.getElementById('rvServico').innerHTML = '<b>' + (scheduleData.servico || '—') + '</b>';
+    document.getElementById('rvLocal').textContent = scheduleData.endereco;
+    document.getElementById('rvDataHora').innerHTML = '<b>' + (scheduleData.data || '—') + '</b> · ' + (scheduleData.horario || '—');
+    document.getElementById('rvProfissional').innerHTML = '<b>' + (scheduleData.profissional || '—') + '</b>';
+  }
+
+  function renderDates(){
+    const grid = document.getElementById('dateGrid');
+    grid.innerHTML = '';
+    const months = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    const dows = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    const today = new Date();
+    // próximos 8 dias, alguns bloqueados (prevenção de erro)
+    const blockedIndexes = [2, 5]; // simulação de dias indisponíveis
+    for(let i = 1; i <= 8; i++){
+      const d = new Date(today);
+      d.setDate(today.getDate() + i);
+      const isBlocked = blockedIndexes.includes(i);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'date-card' + (isBlocked ? ' disabled' : '');
+      const dateStr = d.getDate() + ' de ' + months[d.getMonth()];
+      btn.innerHTML = '<span class="dow">' + dows[d.getDay()] + '</span>' +
+                      '<span class="dnum">' + d.getDate() + '</span>' +
+                      '<span class="dmonth">' + months[d.getMonth()] + '</span>';
+      if(!isBlocked){
+        btn.addEventListener('click', () => selectDate(btn, dateStr));
+      }
+      grid.appendChild(btn);
+    }
+  }
+
+  // ESC fecha agendamento
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && scheduleModal.classList.contains('active')) closeSchedule();
+  });
+
+  /* ============================================ */
+  /* MÁSCARAS DE CAMPO (somente números)          */
+  /* ============================================ */
+  function maskCpf(v){
+    v = (v || '').replace(/\D/g, '').slice(0, 11);
+    if(v.length > 9)      return v.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+    if(v.length > 6)      return v.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+    if(v.length > 3)      return v.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+    return v;
+  }
+  function maskPhone(v){
+    v = (v || '').replace(/\D/g, '').slice(0, 11);
+    if(v.length > 10)     return v.replace(/(\d{2})(\d{5})(\d{1,4})/, '($1) $2-$3');
+    if(v.length > 6)      return v.replace(/(\d{2})(\d{4})(\d{1,4})/, '($1) $2-$3');
+    if(v.length > 2)      return v.replace(/(\d{2})(\d{1,5})/, '($1) $2');
+    if(v.length > 0)      return v.replace(/(\d{1,2})/, '($1');
+    return v;
+  }
+  function onlyDigits(v){ return (v || '').replace(/\D/g, ''); }
+
+  const cpfEl   = document.getElementById('signupCpf');
+  const phoneEl = document.getElementById('signupPhone');
+  if(cpfEl)   cpfEl.addEventListener('input', e => { e.target.value = maskCpf(e.target.value); });
+  if(phoneEl) phoneEl.addEventListener('input', e => { e.target.value = maskPhone(e.target.value); });
+
+  // Idade do longevo: somente números
+  const ageEl = document.getElementById('newLongevoAge');
+  if(ageEl) ageEl.addEventListener('input', e => { e.target.value = onlyDigits(e.target.value).slice(0, 3); });
+
+  // Limpa estado .invalid ao digitar de novo
+  ['signupName','signupEmail','signupCpf','signupPhone','signupPassword','signupPassword2',
+   'newLongevoName','newLongevoRel','newLongevoAge','newLongevoCity']
+    .forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.addEventListener('input', () => el.classList.remove('invalid'));
+    });
+
+  /* ============================================ */
+  /* CRIAR CONTA → ABRE AGENDAMENTO                */
+  /* ============================================ */
+  function showSignupError(msg){
+    const box = document.getElementById('signupError');
+    document.getElementById('signupErrorMsg').textContent = msg;
+    box.classList.add('show');
+  }
+  function clearSignupError(){
+    document.getElementById('signupError').classList.remove('show');
+  }
+
+  function handleSignup(){
+    clearSignupError();
+    const name  = document.getElementById('signupName');
+    const email = document.getElementById('signupEmail');
+    const cpf   = document.getElementById('signupCpf');
+    const phone = document.getElementById('signupPhone');
+    const pass  = document.getElementById('signupPassword');
+    const pass2 = document.getElementById('signupPassword2');
+    const terms = document.getElementById('signupTerms');
+
+    [name,email,cpf,phone,pass,pass2].forEach(el => el.classList.remove('invalid'));
+
+    let firstError = null;
+    const fail = (el, msg) => { el.classList.add('invalid'); if(!firstError) firstError = msg; };
+
+    if(name.value.trim().length < 3) fail(name, 'Digite seu nome completo.');
+
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRe.test(email.value.trim())) fail(email, 'Digite um e-mail válido.');
+
+    if(onlyDigits(cpf.value).length !== 11) fail(cpf, 'CPF deve ter 11 dígitos.');
+
+    if(onlyDigits(phone.value).length < 10) fail(phone, 'Telefone inválido.');
+
+    if(pass.value.length < 6) fail(pass, 'A senha deve ter no mínimo 6 caracteres.');
+
+    if(pass2.value !== pass.value) fail(pass2, 'As senhas não coincidem.');
+
+    if(!terms.checked) firstError = firstError || 'Você precisa aceitar os Termos de Uso.';
+
+    if(firstError){ showSignupError(firstError); return; }
+
+    // Sucesso: fecha o modal de login e abre o de agendamento
+    closeLogin();
+    setTimeout(() => openSchedule(), 200);
+  }
+
+  /* ============================================ */
+  /* CADASTRAR NOVO LONGEVO (DENTRO DO AGENDAR)   */
+  /* ============================================ */
+  const addLongevoModal = document.getElementById('addLongevoModal');
+
+  function openAddLongevo(){
+    addLongevoModal.classList.add('active');
+    // limpa formulário
+    ['newLongevoName','newLongevoRel','newLongevoAge','newLongevoCity'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el){ el.value = ''; el.classList.remove('invalid'); }
+    });
+    document.getElementById('newLongevoError').classList.remove('show');
+    setTimeout(() => document.getElementById('newLongevoName').focus(), 50);
+  }
+  function closeAddLongevo(){
+    addLongevoModal.classList.remove('active');
+  }
+  addLongevoModal.addEventListener('click', e => {
+    if(e.target === addLongevoModal) closeAddLongevo();
+  });
+
+  function handleAddLongevo(){
+    const nameEl = document.getElementById('newLongevoName');
+    const relEl  = document.getElementById('newLongevoRel');
+    const ageEl  = document.getElementById('newLongevoAge');
+    const cityEl = document.getElementById('newLongevoCity');
+    const errBox = document.getElementById('newLongevoError');
+    const errMsg = document.getElementById('newLongevoErrorMsg');
+
+    [nameEl,relEl,ageEl,cityEl].forEach(el => el.classList.remove('invalid'));
+    errBox.classList.remove('show');
+
+    let firstError = null;
+    const fail = (el, msg) => { el.classList.add('invalid'); if(!firstError) firstError = msg; };
+
+    const nm = nameEl.value.trim();
+    if(nm.length < 3) fail(nameEl, 'Digite o nome do longevo.');
+
+    const rel = relEl.value.trim();
+    if(rel.length < 2) fail(relEl, 'Informe o parentesco.');
+
+    const age = parseInt(ageEl.value, 10);
+    if(isNaN(age) || age < 1 || age > 130) fail(ageEl, 'Idade inválida.');
+
+    const city = cityEl.value.trim();
+    if(city.length < 2) fail(cityEl, 'Informe a cidade.');
+
+    if(firstError){
+      errMsg.textContent = firstError;
+      errBox.classList.add('show');
+      return;
+    }
+
+    // Cria card de longevo e insere antes do botão "Cadastrar novo longevo"
+    const list = document.getElementById('longevoList');
+    const addBtn = document.getElementById('addLongevoBtn');
+    const initial = nm.trim().charAt(0).toUpperCase();
+    const label = nm + ' (' + rel.toLowerCase() + ')';
+
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'option-card';
+    card.innerHTML = ''
+      + '<div class="option-icon">' + initial + '</div>'
+      + '<div class="option-text">'
+      +   '<b>' + nm + '</b>'
+      +   '<span>' + rel + ' · ' + age + ' anos · ' + city + '</span>'
+      + '</div>'
+      + '<div class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>';
+    card.addEventListener('click', () => selectOption(card, 'longevo', label));
+    list.insertBefore(card, addBtn);
+
+    // Já seleciona o recém-criado e fecha o modal
+    selectOption(card, 'longevo', label);
+    closeAddLongevo();
+  }
+
+  // ESC fecha o modal de novo longevo
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && addLongevoModal.classList.contains('active')) closeAddLongevo();
+  });
+</script>
+
+</body>
+</html>
